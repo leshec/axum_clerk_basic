@@ -38,7 +38,7 @@ Make sure you have the Shuttle runtime installed. From your terminal, run:
 ```bash
 curl -sSfL https://www.shuttle.dev/install | bash
 ```
-Go to [Shuttle.dev](https://docs.shuttle.dev/getting-started/installation)
+For more shuttle install info go to [Shuttle.dev](https://docs.shuttle.dev/getting-started/installation)
 
 ```bash
 git clone https://github.com/leshec/axum_clerk_basic.git
@@ -46,11 +46,13 @@ cd axum_clerk_basic
 cargo update
 shuttle run
 ```
-Note: check the latest shuttle runtime and axum versions in the docs are right as that can be an issue.
+Go to `http://127.0.0.1:8000/`
+
+
+### Note: check the latest shuttle runtime and axum versions in the docs are right as that can be an issue.
 Further note: Issue with out of date docs. To get Secrets.toml called in the main macro of axum.
 Shuttle::secrets has been replaced with shuttle::runtime.
 
-Go to `http://127.0.0.1:8000/`
 
 For production there are a whole load of other steps, see the Clerk docs. 
 
