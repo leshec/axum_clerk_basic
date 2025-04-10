@@ -29,7 +29,7 @@ You’ll need two keys from Clerk:
     CLERK_PUBLISHABLE_KEY=your-publishable-key-here
     ```
 
-> 🔎 Note: The `index.html` file includes a placeholder for the `CLERK_PUBLISHABLE_KEY` — make sure it matches your `.env` value.
+Note: The `index.html` file includes a placeholder for the `CLERK_PUBLISHABLE_KEY` — make sure it matches your `.env` value.
 
 ### ⚙️ Install Shuttle
 
@@ -48,8 +48,8 @@ shuttle run
 ```
 Go to `http://127.0.0.1:8000/`
 
+Note: check the latest shuttle runtime and axum versions in the docs are right as that can be an issue.
 
-### Note: check the latest shuttle runtime and axum versions in the docs are right as that can be an issue.
 Further note: Issue with out of date docs. To get Secrets.toml called in the main macro of axum.
 Shuttle::secrets has been replaced with shuttle::runtime.
 
