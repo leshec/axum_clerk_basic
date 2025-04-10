@@ -1,0 +1,8 @@
+
+/target
+.shuttle*
+Secrets*.toml
+
+.env
+Cargo.lock
+.DS_Store

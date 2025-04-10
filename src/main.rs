@@ -1,17 +1,10 @@
-use axum::{
-    extract::{Request, State},
-    http::{HeaderMap, StatusCode},
-    response::Html,
-    routing::{get, post},
-    Router,
-};
+use axum::{response::Html, routing::get, Router};
 use clerk_rs::{
     clerk::Clerk,
     validators::{axum::ClerkLayer, jwks::MemoryCacheJwksProvider},
     ClerkConfiguration,
 };
 use shuttle_runtime::SecretStore;
-use std::sync::Arc;
 use tower_http::services::ServeDir;
 
 #[shuttle_runtime::main]
@@ -24,18 +17,29 @@ async fn main(#[shuttle_runtime::Secrets] secrets: SecretStore) -> shuttle_axum:
     let clerk = Clerk::new(config);
 
     let app = Router::new()
-        .route("/index", get(index))
+        //protected routes
+        .route("/amloggedin", get(amloggedin))
+        .route("/protected_route", get(protected_route))
         .layer(ClerkLayer::new(
             MemoryCacheJwksProvider::new(clerk),
             None,
             true,
         ))
-        .route_service("/", ServeDir::new("static"));
+        //unprotected routes
+        .route_service("/", ServeDir::new("static"))
+        .route("/unprotected", get(unprotected));
 
     Ok(app.into())
 }
-// .route("/api/protected", post(protected_handler))
 
-async fn index() -> &'static str {
-    "hello richy poo bear"
+async fn unprotected() -> Html<String> {
+    Html("this info is unprotected".to_string())
+}
+
+async fn amloggedin() -> &'static str {
+    "protected route: hello you are here you are logged in"
+}
+
+async fn protected_route() -> Html<String> {
+    Html("hello from info as a protected route ".to_string())
 }
