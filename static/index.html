@@ -7,55 +7,57 @@
   <!-- Load Clerk -->
   <script src="https://cdn.jsdelivr.net/npm/@clerk/clerk-js@latest"></script>
   <script async crossorigin="anonymous"
-    data-clerk-publishable-key="pk_test_d2FybS1idWxsZnJvZy0xNS5jbGVyay5hY2NvdW50cy5kZXYk"
-    src="https://warm-bullfrog-15.clerk.accounts.dev/npm/@clerk/clerk-js@latest/dist/clerk.browser.js"
-    type="text/javascript"></script>
+    data-clerk-publishable-key="pk_test_d2FybS1idWxsZnJvZy0xNS5jbGVyay5hY2NvdW50cy5kZXYk" <!-- replace above with your
+    clerk public key.. -->
+      src = "https://warm-bullfrog-15.clerk.accounts.dev/npm/@clerk/clerk-js@latest/dist/clerk.browser.js"
+      <!-- go to the quick start javascript section of clerk and copy paste this script -->
+      type = "text/javascript" ></script>
 </head>
 
 <body>
   <div id="app">Loading...</div>
 
   <script>
-    async function initClerkApp() {
-      await Clerk.load();
+      async function initClerkApp() {
+        await Clerk.load();
 
-      function renderApp() {
-        const user = Clerk.user;
+        function renderApp() {
+          const user = Clerk.user;
 
-        if (user) {
-          const name = user.firstName || user.username || user.emailAddress || "friend";
+          if (user) {
+            const name = user.firstName || user.username || user.emailAddress || "friend";
 
-          document.getElementById("app").innerHTML = `
+            document.getElementById("app").innerHTML = `
             <h2>Welcome back, ${name}!</h2>
             <div id="user-button"></div>
             <button id="sign-out">Sign Out</button>
           `;
 
-          Clerk.mountUserButton(document.getElementById("user-button"));
+            Clerk.mountUserButton(document.getElementById("user-button"));
 
-          document.getElementById("sign-out").addEventListener("click", async () => {
-            await Clerk.signOut({redirectUrl: '/'});
-            renderApp(); // re-render after sign-out
-          });
-        } else {
-          document.getElementById("app").innerHTML = `
+            document.getElementById("sign-out").addEventListener("click", async () => {
+              await Clerk.signOut({redirectUrl: '/'});
+              renderApp(); // re-render after sign-out
+            });
+          } else {
+            document.getElementById("app").innerHTML = `
             <h2>Welcome to our site!</h2>
             <p>Please sign in to continue.</p>
             <div id="sign-in"></div>
           `;
 
-          Clerk.mountSignIn(document.getElementById("sign-in"));
+            Clerk.mountSignIn(document.getElementById("sign-in"));
+          }
         }
-      }
 
-      // Initial render
-      renderApp();
-
-      // Re-render whenever auth state changes
-      Clerk.addListener(() => {
+        // Initial render
         renderApp();
-      });
-    }
+
+        // Re-render whenever auth state changes
+        Clerk.addListener(() => {
+          renderApp();
+        });
+      }
 
     window.addEventListener("load", initClerkApp);
   </script>
