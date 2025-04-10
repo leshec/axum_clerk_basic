@@ -51,8 +51,7 @@ Go to `http://127.0.0.1:8000/`
 Note: check the latest shuttle runtime and axum versions in the docs are right as that can be an issue.
 
 Further note: Issue with out of date docs. To get Secrets.toml called in the main macro of axum.
-Shuttle::secrets has been replaced with shuttle::runtime.
-
+ `#[shuttle_secrets::Secrets]` has been replaced with `[shuttle_runtime::Secrets]` as per this main.rs file.
 
 For production there are a whole load of other steps, see the Clerk docs. 
 
