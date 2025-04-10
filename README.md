@@ -7,6 +7,7 @@
 1. Go to [Clerk.dev](https://clerk.dev) and create an account.
 2. Create a new **application**.
 3. Add a **dummy user** so you can test authentication.
+4. Note we use a script tag in the index.html to access to JS Clerk SDK from a CDN. Alternatively, download it via NPM etc as per docs.
 
 You’ll need two keys from Clerk:
 - `CLERK_PUBLISHABLE_KEY` (frontend)
@@ -37,6 +38,7 @@ Make sure you have the Shuttle runtime installed. From your terminal, run:
 ```bash
 curl -sSfL https://www.shuttle.dev/install | bash
 ```
+Go to [Shuttle.dev](https://docs.shuttle.dev/getting-started/installation)
 
 ```bash
 git clone https://github.com/leshec/axum_clerk_basic.git
@@ -44,6 +46,9 @@ cd axum_clerk_basic
 cargo update
 shuttle run
 ```
+Note: check the latest shuttle runtime and axum versions in the docs are right as that can be an issue.
+Further note: Issue with out of date docs. To get Secrets.toml called in the main macro of axum.
+Shuttle::secrets has been replaced with shuttle::runtime.
 
 Go to `http://127.0.0.1:8000/`
 
