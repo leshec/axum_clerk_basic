@@ -2,6 +2,10 @@
 
 # 🚀 Getting Started with Axum + Clerk + Shuttle
 
+Very basic shuttle, axum and clerk set up. Index.html points to authed and unauthed routes. 
+Allows users to sign in or sign up. 
+That is it.
+
 ### 🔐 Set up a Clerk account
 
 1. Go to [Clerk.dev](https://clerk.dev) and create an account.
