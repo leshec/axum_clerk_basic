@@ -1,4 +1,4 @@
-## Note to future self and anyone interested:
+### Note to future self and anyone interested:
 
 # 🚀 Getting Started with Axum + Clerk + Shuttle
 
@@ -14,7 +14,7 @@ You’ll need two keys from Clerk:
 
 ### 🔑 Add your Clerk keys to the project
 
-# You need to add two files and then include them in your .gitignore
+### You need to add two files and then include them in your .gitignore
 
 1. **Create a `Secrets.toml` file** in the **root** of your project:
 
