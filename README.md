@@ -14,6 +14,8 @@ You’ll need two keys from Clerk:
 
 ### 🔑 Add your Clerk keys to the project
 
+# You need to add two files and then include them in your .gitignore
+
 1. **Create a `Secrets.toml` file** in the **root** of your project:
 
     ```toml
